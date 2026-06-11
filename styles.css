@@ -4,11 +4,13 @@
   --muted: #596966;
   --line: #d9e1de;
   --surface: #ffffff;
-  --wash: #f3f7f5;
+  --wash: #f5f8fb;
   --green: #1e6f62;
   --green-dark: #123f39;
   --amber: #c49a37;
-  --blue: #3c617c;
+  --blue: #0a66c2;
+  --blue-dark: #12395d;
+  --blue-soft: #eaf3ff;
   --shadow: 0 18px 45px rgba(17, 36, 33, 0.12);
   font-family:
     "PingFang SC", "Microsoft YaHei", "Noto Sans CJK SC", system-ui,
@@ -181,7 +183,7 @@ a {
 
 .summary-band {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
+  grid-template-columns: repeat(5, 1fr);
   border-bottom: 1px solid var(--line);
   background: var(--wash);
 }
@@ -198,7 +200,7 @@ a {
 
 .metric strong {
   display: block;
-  color: var(--green);
+  color: var(--blue);
   font-size: 42px;
   line-height: 1;
 }
@@ -341,6 +343,129 @@ a {
   gap: 16px;
 }
 
+.honors-section {
+  background:
+    linear-gradient(180deg, #ffffff 0%, var(--wash) 100%);
+  border-top: 1px solid var(--line);
+  border-bottom: 1px solid var(--line);
+}
+
+.honors-intro {
+  display: grid;
+  grid-template-columns: minmax(280px, 0.95fr) minmax(300px, 1.05fr);
+  gap: clamp(28px, 6vw, 70px);
+  align-items: end;
+  margin-bottom: 26px;
+}
+
+.honors-intro p {
+  margin: 0;
+  font-size: 17px;
+}
+
+.privacy-panel {
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 22px;
+  padding: 18px 20px;
+  border: 1px solid #b8d7f6;
+  border-radius: 8px;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+}
+
+.privacy-panel strong {
+  flex: 0 0 auto;
+  font-size: 15px;
+}
+
+.privacy-panel span {
+  color: #35546d;
+  line-height: 1.7;
+}
+
+.honor-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+}
+
+.honor-card {
+  min-height: 290px;
+  padding: 26px;
+  border: 1px solid var(--line);
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  box-shadow: 0 12px 28px rgba(26, 48, 65, 0.07);
+}
+
+.honor-card.wide {
+  grid-column: span 2;
+}
+
+.honor-topline {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.honor-topline span {
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding: 0 10px;
+  border-radius: 999px;
+  background: var(--blue-soft);
+  color: var(--blue-dark);
+  font-size: 13px;
+  font-weight: 800;
+}
+
+.honor-topline strong {
+  color: var(--blue);
+  font-size: 40px;
+  line-height: 1;
+}
+
+.honor-card h3 {
+  margin: 0 0 12px;
+  font-size: 22px;
+  line-height: 1.35;
+}
+
+.honor-card p {
+  margin: 0;
+}
+
+.honor-card ul {
+  display: grid;
+  gap: 8px;
+  margin: 18px 0 0;
+  padding: 0;
+  list-style: none;
+}
+
+.honor-card li {
+  position: relative;
+  padding-left: 18px;
+  color: #344340;
+  line-height: 1.65;
+}
+
+.honor-card li::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.74em;
+  width: 6px;
+  height: 6px;
+  border-radius: 999px;
+  background: var(--amber);
+}
+
 .impact-item {
   padding: 28px;
   border-radius: 8px;
@@ -434,14 +559,20 @@ a {
 
   .summary-band,
   .focus-list,
+  .honor-grid,
   .impact-grid {
     grid-template-columns: repeat(2, 1fr);
   }
 
   .profile-grid,
+  .honors-intro,
   .research-section,
   .work-grid {
     grid-template-columns: 1fr;
+  }
+
+  .honor-card.wide {
+    grid-column: auto;
   }
 
   .work-item.featured {
@@ -475,15 +606,22 @@ a {
 
   .summary-band,
   .focus-list,
+  .honor-grid,
   .impact-grid {
     grid-template-columns: 1fr;
   }
 
   .metric,
   .focus-item,
+  .honor-card,
   .work-item,
   .impact-item {
     padding: 24px 20px;
+  }
+
+  .privacy-panel {
+    align-items: flex-start;
+    flex-direction: column;
   }
 
   .metric {
